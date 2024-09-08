@@ -5,7 +5,7 @@ namespace Domain.Entities;
 
 public class ServiceCategory:Entity<Guid>
 {
-    public Guid SubServiceCategory { get; set; }
+    public Guid? SubServiceCategory { get; set; } = null;
     public string Name { get; set; }
 
     public ServiceCategory()
