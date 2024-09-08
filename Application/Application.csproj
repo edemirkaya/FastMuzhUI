@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\ServiceCategories\Commands\Delete\" />
+    <Folder Include="Features\ServiceCategories\Commands\Update\" />
+    <Folder Include="Features\ServiceCategories\Constants\" />
+    <Folder Include="Features\ServiceCategories\Rules\" />
+    <Folder Include="Features\ServiceCategories\Profiles\" />
+    <Folder Include="Features\ServiceCategories\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.0" />
+  </ItemGroup>
+
 </Project>
