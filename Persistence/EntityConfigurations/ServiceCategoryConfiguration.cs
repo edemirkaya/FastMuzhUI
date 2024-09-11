@@ -11,7 +11,7 @@ public class ServiceCategoryConfiguration : IEntityTypeConfiguration<ServiceCate
         builder.ToTable("ServiceCategory").HasKey(key => key.Id);
 
         builder.Property(sc => sc.Id).HasColumnName("Id").IsRequired();
-        builder.Property(sc => sc.SubServiceCategory).HasColumnName("SubServiceCategory");
+        builder.Property(sc => sc.SubServiceCategoryId).HasColumnName("SubServiceCategoryId");
         builder.Property(sc => sc.Name).HasColumnName("Name");
         builder.Property(sc => sc.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(sc => sc.UpdatedDate).HasColumnName("UpdatedDate");

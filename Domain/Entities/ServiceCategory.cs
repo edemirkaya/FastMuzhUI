@@ -1,25 +1,26 @@
 ﻿using Core.Persistence.Repositories;
+using System.ComponentModel;
 using System.Reflection.Metadata;
 
 namespace Domain.Entities;
 
-public class ServiceCategory:Entity<Guid>
+public class ServiceCategory : Entity<Guid>
 {
-    public Guid? SubServiceCategory { get; set; } = null;
+    public Guid? SubServiceCategoryId { get; set; } = Guid.Empty;
     public string Name { get; set; }
 
     public ServiceCategory()
-    {}
+    { }
 
     public ServiceCategory(Guid id, string name)
     {
         Id = id;
         Name = name;
     }
-    public ServiceCategory(Guid id, Guid subServiceCategory,string name)
+    public ServiceCategory(Guid id, string name, Guid? subServiceCategoryId)
     {
-        Id= id;
-        SubServiceCategory = subServiceCategory;
+        Id = id;
+        SubServiceCategoryId = subServiceCategoryId;
         Name = name;
     }
 }
