@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\ServiceCategories\Commands\Delete\" />
-    <Folder Include="Features\ServiceCategories\Commands\Update\" />
     <Folder Include="Features\ServiceCategories\Constants\" />
     <Folder Include="Features\ServiceCategories\Rules\" />
   </ItemGroup>

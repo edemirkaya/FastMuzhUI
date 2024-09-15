@@ -1,4 +1,7 @@
 ﻿using Application.Features.ServiceCategories.Commands.Create;
+using Application.Features.ServiceCategories.Commands.Delete;
+using Application.Features.ServiceCategories.Commands.Update;
+using Application.Features.ServiceCategories.Queries.GetById;
 using Application.Features.ServiceCategories.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
@@ -21,7 +24,29 @@ namespace WebApi.Controllers
         {
             GetListServiceCategoryQuery query = new() { PageRequest = pageRequest };
             GetListResponse<GetListServiceCategoryListItemDto> response = await Mediator.Send(query);
+
             return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByID([FromRoute] Guid id)
+        {
+            GetByIdServiceCategoryQuery query = new() { Id = id };
+            GetByIdServiceCategoryResponse response = await Mediator.Send(query);
+
+            return Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateServiceCategoryCommand updateServiceCategoryCommand)
+        {
+            return Ok(await Mediator.Send(updateServiceCategoryCommand));
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteServiceCategoryCommand deleteServiceCategoryCommand)
+        {
+            return Ok(await Mediator.Send(deleteServiceCategoryCommand));
         }
     }
 }
