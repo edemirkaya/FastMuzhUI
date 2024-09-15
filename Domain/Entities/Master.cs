@@ -15,25 +15,16 @@ public class Master :Entity<Guid>
     public string Name { get; set; }
     public string Surname { get; set; }
 
-    public virtual MasterProfile? MasterProfile { get; set; }
-    public virtual ICollection<MasterWorkPhoto>? MasterWorkPhotos { get; set; }
+    public virtual MasterProfile? MasterProfiles { get; set; }
 
-    public Master()
-    {
-        MasterWorkPhotos = new HashSet<MasterWorkPhoto>();
-    }
-    public Master(string name, string surname):this()
+
+    public Master(string name, string surname)
     {
         Name = name;
         Surname = surname;
     }
     public Master(string name, string surname, MasterProfile? masterProfile) : this(name, surname)
     {
-        MasterProfile = masterProfile;
-    }
-    public Master(string name, string surname, MasterProfile? masterProfile, ICollection<MasterWorkPhoto>? masterWorkPhotos) : this(name, surname)
-    {
-        MasterProfile = masterProfile;
-        MasterWorkPhotos = masterWorkPhotos;
+        MasterProfiles = masterProfile;
     }
 }

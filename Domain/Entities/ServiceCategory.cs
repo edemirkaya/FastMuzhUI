@@ -9,8 +9,10 @@ namespace Domain.Entities;
 
 public class ServiceCategory : Entity<Guid>
 {
-    public Guid? SubServiceCategoryId { get; set; } = Guid.Empty;
+    public Guid? ParentServiceCategoryId { get; set; } = Guid.Empty;
     public string Name { get; set; }
+
+    public virtual ICollection<ServiceCategory> ParentServiceCategories { get; set; }
 
     public ServiceCategory()
     { }
@@ -20,10 +22,10 @@ public class ServiceCategory : Entity<Guid>
         Id = id;
         Name = name;
     }
-    public ServiceCategory(Guid id, string name, Guid? subServiceCategoryId)
+    public ServiceCategory(Guid id, string name, Guid? parentServiceCategoryId)
     {
         Id = id;
-        SubServiceCategoryId = subServiceCategoryId;
+        ParentServiceCategoryId = parentServiceCategoryId;
         Name = name;
     }
 }
