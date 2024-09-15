@@ -1,4 +1,7 @@
-﻿using Core.Persistence.Repositories;
+﻿/*
+    - Sistemde sunulan hizmetlerin Listesidir. Nested sonsuz kırılımlı br yapıya sahiptir.
+ */
+using Core.Persistence.Repositories;
 using System.ComponentModel;
 using System.Reflection.Metadata;
 
