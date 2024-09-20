@@ -18,6 +18,8 @@ public class MasterProfileConfiguration : IEntityTypeConfiguration<MasterProfile
         builder.Property(sc => sc.IsActive).HasColumnName("IsActive").IsRequired();
 
         builder.HasMany(sc => sc.MasterWorkPhotos);
+        builder.HasMany(sc => sc.ServiceCategories);
+        builder.HasOne(sc => sc.Master).WithOne(sc=> sc.MasterProfile).HasForeignKey<MasterProfile>(sc=> sc.MasterId);
 
         builder.HasQueryFilter(filter => !filter.DeletedDate.HasValue);
     }

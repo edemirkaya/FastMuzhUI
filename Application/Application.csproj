@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\MasterProfiles\Commands\" />
+    <Folder Include="Features\MasterProfiles\Constants\" />
+    <Folder Include="Features\MasterProfiles\Rules\" />
     <Folder Include="Features\ServiceCategories\Constants\" />
     <Folder Include="Features\ServiceCategories\Rules\" />
   </ItemGroup>

@@ -19,7 +19,7 @@ public class MasterWorkPhotoConfiguration : IEntityTypeConfiguration<MasterWorkP
         builder.Property(sc => sc.DeletedDate).HasColumnName("DeletedDate");
         builder.Property(sc => sc.IsActive).HasColumnName("IsActive").IsRequired();
 
-        builder.HasOne(sc => sc.Master);
+        builder.HasOne(sc => sc.MasterProfile);
 
         builder.HasQueryFilter(filter => !filter.DeletedDate.HasValue);
     }

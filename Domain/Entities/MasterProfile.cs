@@ -10,21 +10,22 @@ namespace Domain.Entities;
 
 public class MasterProfile:Entity<Guid>
 {
-    public Guid MasterId { get; set; }
     public string Adress { get; set; }
     public string ProfilePhoto { get; set; }
     public decimal Point { get; set; }
+    public Guid MasterId { get; set; }
 
-    public virtual Master Master { get; set; }
+
     public virtual ICollection<ServiceCategory>? ServiceCategories { get; set; }
     public virtual ICollection<MasterWorkPhoto>? MasterWorkPhotos { get; set; }
+    public virtual Master Master {  get; set; }
 
     public MasterProfile()
-    {
+    { 
         ServiceCategories = new HashSet<ServiceCategory>();
         MasterWorkPhotos = new HashSet<MasterWorkPhoto>();
     }
-
+        
     public MasterProfile(string adress, string profilePhoto, Guid masterId):this()
     {
         Adress = adress;

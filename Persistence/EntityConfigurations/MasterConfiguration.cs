@@ -18,7 +18,7 @@ public class MasterConfiguration : IEntityTypeConfiguration<Master>
         builder.Property(sc => sc.DeletedDate).HasColumnName("DeletedDate");
         builder.Property(sc => sc.IsActive).HasColumnName("IsActive").IsRequired();
 
-        builder.HasOne(sc => sc.MasterProfiles);
+        builder.HasOne(sc => sc.MasterProfile).WithOne(sc=> sc.Master).HasForeignKey<Master>(sc=> sc.MasterProfileId);
 
         builder.HasQueryFilter(filter => !filter.DeletedDate.HasValue);
     }

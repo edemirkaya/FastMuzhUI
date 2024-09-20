@@ -4,18 +4,18 @@
 
     - Ustaya ait adı soyadı 
     - Ustaya ait Profil bilgileri virtual MasterProfile
-    - Ustanın daha önceki yaptığı işler den maks. 10 adet fotoğraf virtual MasterWorkPhotos
 
  */
 using Core.Persistence.Repositories;
 
 namespace Domain.Entities;
-public class Master :Entity<Guid>
+public class Master : Entity<Guid>
 {
     public string Name { get; set; }
     public string Surname { get; set; }
+    public Guid? MasterProfileId { get; set; }
 
-    public virtual MasterProfile? MasterProfiles { get; set; }
+    public virtual MasterProfile? MasterProfile { get; set; }
 
 
     public Master(string name, string surname)
@@ -23,8 +23,8 @@ public class Master :Entity<Guid>
         Name = name;
         Surname = surname;
     }
-    public Master(string name, string surname, MasterProfile? masterProfile) : this(name, surname)
+    public Master(string name, string surname, Guid? masterProfileId) : this(name, surname)
     {
-        MasterProfiles = masterProfile;
+        MasterProfileId = masterProfileId.HasValue ? masterProfileId : null;
     }
 }

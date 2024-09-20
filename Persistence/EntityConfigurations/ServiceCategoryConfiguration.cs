@@ -19,6 +19,7 @@ public class ServiceCategoryConfiguration : IEntityTypeConfiguration<ServiceCate
         builder.Property(sc => sc.IsActive).HasColumnName("IsActive").IsRequired();
 
         builder.HasMany(sc => sc.ParentServiceCategories);
+        builder.HasMany(sc => sc.MasterProfiles);
 
         builder.HasQueryFilter(filter => !filter.DeletedDate.HasValue);
     }

@@ -13,6 +13,7 @@ public class ServiceCategory : Entity<Guid>
     public string Name { get; set; }
 
     public virtual ICollection<ServiceCategory> ParentServiceCategories { get; set; }
+    public virtual ICollection<MasterProfile> MasterProfiles { get; set; }
 
     public ServiceCategory()
     { }

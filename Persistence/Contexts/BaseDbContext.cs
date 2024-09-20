@@ -13,7 +13,7 @@ public class BaseDbContext : DbContext
     public DbSet<Master> Masters { get; set; }
     public DbSet<MasterProfile> MasterProfiles { get; set; }
     public DbSet<MasterWorkPhoto> MasterWorkPhotos { get; set; }
-    public DbSet<JobPost> JobPosts { get; set; }
+    //public DbSet<JobPost> JobPosts { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions,IConfiguration configuration):base(dbContextOptions)
     {

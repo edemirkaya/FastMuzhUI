@@ -10,23 +10,26 @@ public class MasterWorkPhoto:Entity<Guid>
     public string Name { get; set; }
     public string Explanation { get; set; }
     public string Url { get; set; }
-    public Guid MasterId { get; set; }
+    public Guid MasterProfileId { get; set; }
     public Guid? WorkId { get; set; }
     public string WorkPhotoUrl{ get; set; }
 
-    public virtual Master Master { get; set; }
-    public virtual JobPost JobPost { get; set; }
+    public virtual MasterProfile? MasterProfile { get; set; }
 
-    public MasterWorkPhoto(string name,string explanation,string url)
+    public MasterWorkPhoto()
+    {
+        
+    }
+    public MasterWorkPhoto(string name,string explanation,string url):this()
     {
         Name = name;    
         Explanation = explanation;
         Url = url;
     }
 
-    public MasterWorkPhoto(string name, string explanation, string url,Guid masterId, Guid? workId):this(name, explanation, url)
+    public MasterWorkPhoto(string name, string explanation, string url,Guid masterProfileId, Guid? workId):this(name, explanation, url)
     {
-        MasterId = masterId;
+        MasterProfileId = masterProfileId;
         WorkId = workId;
     }
 }

@@ -11,8 +11,11 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("FastMuzhDb"));
+        services.AddDbContext<BaseDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("fastbund")));
+        
         services.AddScoped<IServiceCategoryRepository, ServiceCategoryRepository>();
+        services.AddScoped<IMasterProfileRepository, MasterProfileRepository>();
+
         return services;
     }
 }
