@@ -27,7 +27,7 @@ public class GetListMasterProfileQuery : IRequest<GetListResponse<GetListMasterP
         public async Task<GetListResponse<GetListMasterProfileListItemDto>> Handle(GetListMasterProfileQuery request, CancellationToken cancellationToken)
         {
             Paginate<MasterProfile> masterProfile = await _masterProfileRepository.GetListAsync(
-                include: m => m.Include(m => m.Master).Include(m => m.MasterWorkPhotos).Include(m => m.ServiceCategories),
+                include: m => m.Include(m => m.Masters).Include(m=> m.ServiceCategories)/*.Include(m => m.MasterWorkPhotos).Include(m => m.ServiceCategories),*/,
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
                 );

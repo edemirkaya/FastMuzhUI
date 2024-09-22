@@ -3,8 +3,10 @@ using Application.Features.ServiceCategories.Commands.Delete;
 using Application.Features.ServiceCategories.Commands.Update;
 using Application.Features.ServiceCategories.Queries.GetById;
 using Application.Features.ServiceCategories.Queries.GetList;
+using Application.Features.ServiceCategories.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -24,6 +26,15 @@ namespace WebApi.Controllers
         {
             GetListServiceCategoryQuery query = new() { PageRequest = pageRequest };
             GetListResponse<GetListServiceCategoryListItemDto> response = await Mediator.Send(query);
+
+            return Ok(response);
+        }
+
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] DynamicQuery? dynamicQuery)
+        {
+            GetListByDynamicServiceCategoryQuery query = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+            GetListResponse<GetListByDynamicServiceCategoryListItemDto> response = await Mediator.Send(query);
 
             return Ok(response);
         }

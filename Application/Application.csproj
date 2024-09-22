@@ -10,8 +10,6 @@
     <Folder Include="Features\MasterProfiles\Commands\" />
     <Folder Include="Features\MasterProfiles\Constants\" />
     <Folder Include="Features\MasterProfiles\Rules\" />
-    <Folder Include="Features\ServiceCategories\Constants\" />
-    <Folder Include="Features\ServiceCategories\Rules\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +25,9 @@
   <ItemGroup>
     <Reference Include="Core.Application">
       <HintPath>..\..\..\FastMuzhCorePackages\Core.Packages\Core.Application\bin\Debug\net8.0\Core.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.CrossCuttingConserns">
+      <HintPath>..\..\..\FastMuzhCorePackages\Core.Packages\Core.CrossCuttingConserns\bin\Debug\net8.0\Core.CrossCuttingConserns.dll</HintPath>
     </Reference>
     <Reference Include="Core.Persistence">
       <HintPath>..\..\..\FastMuzhCorePackages\Core.Packages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>

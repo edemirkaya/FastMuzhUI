@@ -1,0 +1,27 @@
+INSERT INTO public."Masters"("Id", "Name", "Surname", "MasterProfileId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('135cf044-67a1-41bf-859f-409303410f21', 'Ertuðrul', 'Demirkaya', '6bfe3532-1c74-4fe6-b723-af5d19e37d30', 'true', '2024-09-22 16:58:00', null, null);
+INSERT INTO public."Masters"("Id", "Name", "Surname", "MasterProfileId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('de53fd0b-1962-46f2-ae9a-87e6290fb56e', 'Alona', 'Titenko', '3dcf7a0b-2519-41a2-9082-3447ecf55076', 'true', '2024-09-22 16:58:00', null, null);	
+
+INSERT INTO public."MasterProfiles"(
+	"Id", "Adress", "ProfilePhoto", "Point", "MasterId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('6bfe3532-1c74-4fe6-b723-af5d19e37d30', 'Fethiye/Muðla', 'photo2.jpeg','5', '135cf044-67a1-41bf-859f-409303410f21', 'true', '2024-09-22 17:04:00', null, null);	
+INSERT INTO public."MasterProfiles"(
+	"Id", "Adress", "ProfilePhoto", "Point", "MasterId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('3dcf7a0b-2519-41a2-9082-3447ecf55076', 'Fethiye/Muðla', 'photo1.jpeg','4.6', 'de53fd0b-1962-46f2-ae9a-87e6290fb56e', 'true', '2024-09-22 17:04:00', null, null);
+
+INSERT INTO public."ServiceCategories"(
+	"Id", "Name", "ServiceCategoryId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('be29a330-f3a4-49c3-a59d-2e10228e2cba', 'Ev Tadilat', null, 'true', '2024-09-22 17:10:00', null, null);
+
+INSERT INTO public."ServiceCategories"(
+	"Id", "Name", "ServiceCategoryId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('f59f5b0a-e7f8-499d-b4de-aac3f3616443', 'Banyo Tadilat', 'be29a330-f3a4-49c3-a59d-2e10228e2cba', 'true', '2024-09-22 17:10:00', null, null);	
+
+INSERT INTO public."ServiceCategories"(
+	"Id", "Name", "ServiceCategoryId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('19d982b2-66e4-447c-b410-a9dc62370347', 'Otomobil', null, 'true', '2024-09-22 17:10:00', null, null);
+
+INSERT INTO public."ServiceCategories"(
+	"Id", "Name", "ServiceCategoryId", "IsActive", "CreatedDate", "UpdatedDate", "DeletedDate")
+	VALUES ('77d14a48-6153-4d29-931b-27f236e02575', 'Otomobil/Elektrik', '19d982b2-66e4-447c-b410-a9dc62370347', 'true', '2024-09-22 17:10:00', null, null);			

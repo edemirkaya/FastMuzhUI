@@ -3,7 +3,7 @@
 public class GetByIdServiceCategoryResponse
 {
     public Guid Id { get; set; }
-    public Guid? SubServiceCategoryId { get; set; }
+    public Guid? ParentServiceCategoryId { get; set; }
     public string Name { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedDate { get; set; }

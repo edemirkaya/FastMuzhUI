@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240920211732_InitializeDb")]
-    partial class InitializeDb
+    [Migration("20240922142649_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,9 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MasterProfileId")
+                        .IsUnique();
+
                     b.ToTable("Masters", (string)null);
                 });
 
@@ -106,65 +109,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MasterId")
-                        .IsUnique();
-
                     b.ToTable("MasterProfiles", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.MasterWorkPhoto", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("CreatedDate");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DeletedDate");
-
-                    b.Property<string>("Explanation")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("Explanation");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean")
-                        .HasColumnName("IsActive");
-
-                    b.Property<Guid>("MasterProfileId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("Name");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("UpdatedDate");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("Url");
-
-                    b.Property<Guid?>("WorkId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("WorkPhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MasterProfileId");
-
-                    b.ToTable("MasterWorkPhotos", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.ServiceCategory", b =>
@@ -192,8 +137,7 @@ namespace Persistence.Migrations
                         .HasColumnName("Name");
 
                     b.Property<Guid?>("ParentServiceCategoryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("ParentServiceCategoryId");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("ServiceCategoryId")
                         .HasColumnType("uuid");
@@ -221,29 +165,16 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ServiceCategoriesId");
 
-                    b.ToTable("MasterProfileServiceCategory");
+                    b.ToTable("MasterProfileServiceCatalogs", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.MasterProfile", b =>
+            modelBuilder.Entity("Domain.Entities.Master", b =>
                 {
-                    b.HasOne("Domain.Entities.Master", "Master")
-                        .WithOne("MasterProfile")
-                        .HasForeignKey("Domain.Entities.MasterProfile", "MasterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Domain.Entities.MasterProfile", "MasterProfiles")
+                        .WithOne("Masters")
+                        .HasForeignKey("Domain.Entities.Master", "MasterProfileId");
 
-                    b.Navigation("Master");
-                });
-
-            modelBuilder.Entity("Domain.Entities.MasterWorkPhoto", b =>
-                {
-                    b.HasOne("Domain.Entities.MasterProfile", "MasterProfile")
-                        .WithMany("MasterWorkPhotos")
-                        .HasForeignKey("MasterProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MasterProfile");
+                    b.Navigation("MasterProfiles");
                 });
 
             modelBuilder.Entity("Domain.Entities.ServiceCategory", b =>
@@ -268,14 +199,10 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Entities.Master", b =>
-                {
-                    b.Navigation("MasterProfile");
-                });
-
             modelBuilder.Entity("Domain.Entities.MasterProfile", b =>
                 {
-                    b.Navigation("MasterWorkPhotos");
+                    b.Navigation("Masters")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.ServiceCategory", b =>

@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.ServiceCategories.Queries.GetList;
 
@@ -26,6 +27,7 @@ public class GetListServiceCategoryQuery : IRequest<GetListResponse<GetListServi
         public async Task<GetListResponse<GetListServiceCategoryListItemDto>> Handle(GetListServiceCategoryQuery request, CancellationToken cancellationToken)
         {
             Paginate<ServiceCategory> serviceCategories =  await _repository.GetListAsync(
+                include: m=> m.Include(i=> i.ParentServiceCategories),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken);
