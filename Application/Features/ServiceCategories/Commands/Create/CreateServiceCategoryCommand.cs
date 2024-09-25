@@ -1,12 +1,13 @@
 ﻿using Application.Features.ServiceCategories.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.ServiceCategories.Commands.Create;
 
-public class CreateServiceCategoryCommand:IRequest<CreateServiceCategoryResponse>
+public class CreateServiceCategoryCommand:IRequest<CreateServiceCategoryResponse>,ITransactionRequest
 {
     public Guid? ParentServiceCategoryId { get; set; }
     public string Name { get; set; }
