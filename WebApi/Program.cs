@@ -8,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.AddPersistenceServices(builder.Configuration);
+
+builder.Services.AddDistributedMemoryCache();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

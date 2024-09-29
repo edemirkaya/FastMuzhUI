@@ -1,9 +1,11 @@
 ﻿using Core.Application.Pipelines;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
 using Core.Application.Rules;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace Application;
@@ -20,9 +22,10 @@ public static class ApplicationServiceRegistration
 
         services.AddMediatR(configuration =>
         {
-            configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
-            configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
+        configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
+        configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
+        configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
         });
 
         return services;
